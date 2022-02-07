@@ -33,3 +33,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERS
     && curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=$BIN_PATH
 
 USER www-data
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+EXPOSE 8000

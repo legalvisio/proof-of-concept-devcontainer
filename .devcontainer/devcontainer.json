@@ -20,35 +20,11 @@
 	"workspaceFolder": "/workspace",
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/zsh",
-		"sqltools.connections": [
-			{
-			"name": "Container database",
-			"driver": "PostgreSQL",
-			"previewLimit": 50,
-			"server": "localhost",
-			"port": 5432,
-			"database": "postgres",
-			"username": "postgres",
-			"password": "postgres"
-			}
-		],
-		"files.eol": "\n",
-		"files.insertFinalNewline": true,
-		"files.trimFinalNewlines": true,
-		"files.trimTrailingWhitespace": true,
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
-		}
-	},
+	"settings": {},
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"bmewburn.vscode-intelephense-client",
-		"mtxr.sqltools",
-    	"mtxr.sqltools-driver-pg",
+		"bmewburn.vscode-intelephense-client"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
