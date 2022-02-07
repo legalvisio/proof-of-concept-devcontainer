@@ -11,6 +11,9 @@ services:
 
   database:
     image: postgres:12.5
+    restart: unless-stopped
+    volumes:
+      - ./fixtures.sql:/docker-entrypoint-initdb.d/fixtures.sql:ro
     environment:
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
