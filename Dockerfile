@@ -2,9 +2,13 @@ FROM php:7.4-fpm AS php-fpm
 
 FROM php-fpm AS dev
 
+ENV COMPOSER_VERSION=2.1.5
+ENV BIN_PATH=/usr/local/bin
+
 RUN apt-get update \
     && apt-get install -y \
-    neovim
+    neovim \
+    git
 
 RUN apt-get install sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
@@ -13,5 +17,8 @@ RUN apt-get install sudo \
 RUN mkdir /legalvisio \
   && chown www-data: /legalvisio \
   && usermod --shell /bin/bash --home /legalvisio www-data
+
+RUN curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION --install-dir=$BIN_PATH --filename=composer \
+    && curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=$BIN_PATH
 
 USER www-data
