@@ -3,24 +3,15 @@ services:
 
   app:
     build: .
-    ports:
-      - 8000:8000
     volumes:
       - .:/workspace:cached
+    network_mode: service:database
     depends_on:
       - database
 
   database:
     image: postgres:12.5
     environment:
-      POSTGRES_DB: customer0000001
-      POSTGRES_PASSWORD: legalvisio
-      POSTGRES_USER: legalvisio
-    ports:
-      - 5432:5432
-    networks:
-      - bridge
-
-networks:
-  bridge:
-    driver: bridge
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
