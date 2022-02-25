@@ -17,8 +17,9 @@ ENV BIN_PATH=/usr/local/bin
 
 RUN apt-get update \
     && apt-get install -y \
-    neovim \
     git \
+    neovim \
+    postgresql-client \
     zsh
 
 RUN useradd --create-home vscode \
