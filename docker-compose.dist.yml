@@ -5,7 +5,6 @@ services:
     build: .
     volumes:
       - .:/workspace:cached
-    network_mode: service:database
     depends_on:
       - database
     networks:
