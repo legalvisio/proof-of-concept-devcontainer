@@ -21,18 +21,15 @@ RUN apt-get update \
     git \
     zsh
 
-RUN apt-get install sudo \
-    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
-    && usermod -aG sudo www-data
-
-RUN mkdir /legalvisio \
-  && chown www-data: /legalvisio \
-  && usermod --shell /bin/bash --home /legalvisio www-data
+RUN useradd --create-home vscode \
+  && apt-get install -y sudo \
+  && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
+  && usermod -aG sudo vscode
 
 RUN curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION --install-dir=$BIN_PATH --filename=composer \
     && curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=$BIN_PATH
 
-USER www-data
+USER vscode
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
